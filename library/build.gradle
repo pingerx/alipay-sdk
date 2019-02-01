@@ -5,7 +5,7 @@ apply plugin: 'com.jfrog.bintray'
 android {
     compileSdkVersion 28
     defaultConfig {
-        minSdkVersion 16
+        minSdkVersion 14
         targetSdkVersion 28
     }
 
@@ -18,46 +18,40 @@ android {
 }
 
 dependencies {
-    api(name: 'alipaySdk-15.5.9-20181123210601', ext: 'aar')
+    api files('libs/alipaySdk-15.5.9-20181123210601.jar')
 }
 
-repositories {
-    flatDir {
-        dirs 'libs', "/libs"
-    }
-}
-
-version = "1.0.0"           // aar的版本号
-//group = 'com.dannylee'    // 所在组
+version = "1.0.0"
+group = "com.pingerx"
 def siteUrl = 'https://github.com/pingerx/alipay-sdk'    // 项目主页
 def gitUrl = 'https://github.com/pingerx/alipay-sdk.git' // 项目的git地址
-def module_name = 'alipay-sdk'    // 项目的名称
 
 install {
     repositories.mavenInstaller {
-        pom {
-            project {
-                packaging 'aar'
-                name 'alipay-sdk'       // 名称
+        pom.project {
+            groupId 'com.pingerx'
+            artifactId 'alipay-sdk'
+            packaging 'aar'
+            name 'alipay-sdk'
+            description 'alipay sdk with aar file.'
+            url siteUrl
+            licenses {
+                license {
+                    name 'The Apache Software License, Version 2.0'     // 开源协议名称
+                    url 'http://www.apache.org/licenses/LICENSE-2.0.txt' // 协议地址
+                }
+            }
+            developers {
+                developer {
+                    id 'pingerx'               // 账号
+                    name 'pingerx'             // 名称
+                    email 'xmpinger@gmail.com' // 邮箱地址
+                }
+            }
+            scm {
+                connection gitUrl
+                developerConnection gitUrl
                 url siteUrl
-                licenses {
-                    license {
-                        name 'The Apache Software License, Version 2.0'     // 开源协议名称
-                        url 'http://www.apache.org/licenses/LICENSE-2.0.txt' // 协议地址
-                    }
-                }
-                developers {
-                    developer {
-                        id 'pingerx'               // 账号
-                        name 'pingerx'             // 名称
-                        email 'xmpinger@gmail.com' // 邮箱地址
-                    }
-                }
-                scm {
-                    connection gitUrl
-                    developerConnection gitUrl
-                    url siteUrl
-                }
             }
         }
     }
@@ -91,11 +85,16 @@ bintray {
     key = properties.getProperty("bintray.apikey")
     configurations = ['archives']
     pkg {
+        userOrg = 'fungo'
         repo = "maven"                   // 你在bintray上创建的库的名称
-        name = module_name               // 在jcenter中的项目名称
+        name = "alipay-sdk"              // 在jcenter中的项目名称
         websiteUrl = siteUrl
         vcsUrl = gitUrl
         licenses = ["Apache-2.0"]
         publish = true
     }
 }
+
+// gradlew build
+// gradlew install
+// gradlew bintrayUpload
