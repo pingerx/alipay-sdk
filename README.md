@@ -7,9 +7,9 @@
 ### 使用
 在build.gradle文件中添加依赖
 
-        dependencies {
-            implementation 'com.pingerx:alipay-sdk:1.0.0'
-        }
+    dependencies {
+        implementation 'com.pingerx:alipay-sdk:1.0.0'
+    }
 
 ### 依赖的支付宝SDK
 * alipaySdk-15.5.9-20181123210601.aar
