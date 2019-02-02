@@ -9,7 +9,8 @@
 在build.gradle文件中添加依赖
 
     dependencies {
-        implementation 'com.pingerx:alipay-sdk:1.0.0' }
+        implementation 'com.pingerx:alipay-sdk:1.0.0'
+    }
 
 ### 使用流程
 * [具体流程请看官方文档](https://docs.open.alipay.com/204/105296/)
