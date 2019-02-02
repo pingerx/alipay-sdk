@@ -1,6 +1,7 @@
 # 支付宝Android版支付SDK包装
 [ ![Download](https://api.bintray.com/packages/fungo/maven/alipay-sdk/images/download.svg) ](https://bintray.com/fungo/maven/alipay-sdk/_latestVersion)
 
+### 说明
 由于支付宝官方提供的最新支付SDK是AAR格式的，在Library中使用需要各个module都配置aar路径，非常麻烦。
 为了避免这种到处配置的问题，这里把AAR文件添加到`jcenter`仓库，生成依赖的方式，可以直接引用。
 
@@ -11,8 +12,7 @@
         implementation 'com.pingerx:alipay-sdk:1.0.0' }
 
 ### 使用流程
-> [具体流程请看官方文档](https://docs.open.alipay.com/204/105296/)
-
+* [具体流程请看官方文档](https://docs.open.alipay.com/204/105296/)
 * 导入sdk资源，只需要添加依赖即可。
 
 #### 支付接口调用
